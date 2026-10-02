@@ -1,0 +1,43 @@
+** sch_path: /home/nexus_is/Diices-Training-2026/Training-3/seri-paralel.sch
+**.subckt seri-paralel
+XM1 net5 net2 net1 net1 sky130_fd_pr__nfet_01v8 L={L1} W={w1} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM2 net4 net2 0 0 sky130_fd_pr__nfet_01v8 L={L1} W={w1} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+VDD net2 0 1.8
+Vmeas1 net2 net5 0
+.save i(vmeas1)
+XM3 net6 net3 0 0 sky130_fd_pr__nfet_01v8 L={L2} W={w2} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+Vmeas2 net3 net6 0
+.save i(vmeas2)
+VDD1 net3 0 1.8
+Vmeas3 net1 net4 0
+.save i(vmeas3)
+**** begin user architecture code
+
+
+
+.param L1 = 0.5
+.param L2 = 0.3
+
+.param w1 = 3
+.param w2 = 3
+
+
+.save
+.control
+
+tran 10n 100n
+
+plot i(vmeas1) i(vmeas2) i(vmeas3)
+
+.endc
+
+
+
+
+.lib /home/nexus_is/.ciel/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/combined/sky130.lib.spice tt
+**** end user architecture code
+**.ends
+.end

@@ -1,0 +1,66 @@
+** sch_path: /home/nexus_is/Diices-Training-2026/Training-3/conventional-cm.sch
+**.subckt conventional-cm
+XM1 net1 net1 0 0 sky130_fd_pr__nfet_01v8 L={L1} W={w1} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM2 net2 net1 0 0 sky130_fd_pr__nfet_01v8 L={L2} W={w2} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM3 net3 net3 0 0 sky130_fd_pr__nfet_01v8 L={L1} W={w1} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM4 net4 net3 0 0 sky130_fd_pr__nfet_01v8 L={L3} W={w3} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM5 net4 net3 0 0 sky130_fd_pr__nfet_01v8 L={L4} W={w4} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM6 net4 net3 0 0 sky130_fd_pr__nfet_01v8 L={L5} W={w5} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+Vmeas1 net6 net1 0
+.save i(vmeas1)
+Vmeas2 net5 net2 0
+.save i(vmeas2)
+Vmeas3 net7 net3 0
+.save i(vmeas3)
+Vmeas4 net5 net4 0
+.save i(vmeas4)
+VDD1 net5 0 1.8
+I0 net5 net6 1m
+I1 net5 net7 1m
+**** begin user architecture code
+
+
+
+.param L1 = 0.3
+.param L2 = 0.3
+.param L3 = 0.3
+.param L4 = 0.3
+.param L5 = 0.3
+
+.param w1 = 3
+.param w2 = 3
+.param w3 = 3
+.param w4 = 3
+.param w5 = 3
+
+
+.save
+.control
+
+*dc vdd1 0 1.8 0.01
+*plot i(vmeas1) i(vmeas2) i(vmeas4)
+
+tran 1n 100n
+plot i(vmeas1) i(vmeas2) i(vmeas4)
+
+op
+let error1 = i(vmeas2)-i(vmeas1)
+let error2 = i(vmeas4)-(i(vmeas1)*3)
+print i(vmeas1) i(vmeas2) i(vmeas4)
+print error1 error2
+
+.endc
+
+
+
+
+.lib /home/nexus_is/.ciel/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/combined/sky130.lib.spice tt
+**** end user architecture code
+**.ends
+.end
