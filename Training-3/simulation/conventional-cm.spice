@@ -21,8 +21,8 @@ Vmeas3 net7 net3 0
 Vmeas4 net5 net4 0
 .save i(vmeas4)
 VDD1 net5 0 1.8
-I0 net5 net6 1m
-I1 net5 net7 1m
+I0 net5 net6 1u
+I1 net5 net7 1u
 **** begin user architecture code
 
 

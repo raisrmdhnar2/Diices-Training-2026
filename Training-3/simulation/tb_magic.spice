@@ -1,0 +1,27 @@
+** sch_path: /home/nexus_is/Diices-Training-2026/Training-3/tb_magic.sch
+**.subckt tb_magic
+V1 S 0 1.8
+Vreff Dreff net1 0
+.save i(vreff)
+I0 net1 0 1u
+Vout Dout 0 0
+.save i(vout)
+**** begin user architecture code
+.lib /home/nexus_is/.ciel/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/combined/sky130.lib.spice tt
+
+
+
+.include ../cth_tugas.spice
+
+.control
+ save all
+ tran 1n 10n
+ plot i(vreff) i(vout)
+
+.endc
+
+
+
+**** end user architecture code
+**.ends
+.end

@@ -1,0 +1,7 @@
+Running: xsim.dir/tb_fourbitshift_behav/xsimk -simmode gui -wdb tb_fourbitshift_behav.wdb -simrunnum 0 -socket 39579
+Design successfully loaded
+Design Loading Memory Usage: 29380 KB (Peak: 29972 KB)
+Design Loading CPU Usage: 30 ms
+Simulation completed
+Simulation Memory Usage: 111376 KB (Peak: 168648 KB)
+Simulation CPU Usage: 260 ms

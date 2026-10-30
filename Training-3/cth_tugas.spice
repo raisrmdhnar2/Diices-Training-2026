@@ -1,0 +1,9 @@
+* SPICE3 file created from cth_tugas.ext - technology: sky130A
+
+X0 Dout Dreff S S sky130_fd_pr__pfet_01v8 ad=3.125 pd=5 as=3.125 ps=5 w=2.5 l=1.5
+X1 S Dreff Dout S sky130_fd_pr__pfet_01v8 ad=6.25 pd=10 as=3.125 ps=5 w=2.5 l=1.5
+X2 S Dreff Dout S sky130_fd_pr__pfet_01v8 ad=3.125 pd=5 as=3.125 ps=5 w=2.5 l=1.5
+X3 Dout Dreff S S sky130_fd_pr__pfet_01v8 ad=3.125 pd=5 as=3.125 ps=5 w=2.5 l=1.5
+X4 S Dreff Dreff S sky130_fd_pr__pfet_01v8 ad=3.125 pd=5 as=6.25 ps=10 w=2.5 l=1.5
+C0 Dreff S 9.54453f
+C1 S VSUBS 45.2944f
