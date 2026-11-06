@@ -1,0 +1,18 @@
+{
+    "DESIGN_NAME": "shift_register_4bit",
+    "VERILOG_FILES": ["dir::src/shift_register_4bit.v"],
+    "CLOCK_PORT": "clk",
+    "CLOCK_PERIOD": 10.0,
+    "RESET_PORT": "rst",
+    "RESET_ACTIVE_VALUE": 1,
+    "FP_CORE_UTIL": 20,
+    "FP_ASPECT_RATIO": 1,
+    "FP_IO_HLAYER": "met3",
+    "FP_IO_VLAYER": "met2",
+    "GLB_RESIZER_TIMING_OPTIMIZATIONS": true,
+    "SYNTH_STRATEGY": "AREA 0",
+    "DIE_AREA": "0 0 100 100",
+    "CORE_AREA": "10 10 90 90",
+    "RUN_KLAYOUT_XOR": false,
+    "QUIT_ON_XOR_ERROR": false
+}

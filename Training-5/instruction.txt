@@ -1,0 +1,35 @@
+Download Board FPGA Nexys A4 disini (copy dan pilih Nexys 4 Master ke folder proyek):
+git clone https://github.com/Digilent/digilent-xdc
+
+Target Hardware:
+xc7a100tcsg324-1
+
+Panduan Konversi RTL to GDSII:
+https://github.com/rajivbishwokarma/openlane_rtl2gds_sky130
+
+Workflow Digital IC Design:
+
+1. Buat rangkaian digital dlu dengan verilog
+2. Buat test bench dan simulasikan dlu
+3. Uji di FPGA sesuaikan constraint nya
+4. Jika sudah sesuai dengan output yang diharapkan maka lanjut ke tahap berikutnya jika belum kembali ke langkah 1
+5. RTL to GDSII (Layout) menggunakan OpenLane
+6. Copy modul verilog ke folder design OpenLane src lalu buat config.json
+7. convert jadi Layout
+8 Post Layout Simulation with Ngspice
+
+Simulasi lewat iverilog:
+iverilog -o sim_shiftreg 4bitshift.v tb_fourbitshift.v
+vvp sim_shiftreg
+
+
+Tugas
+Buat Counter 4bit Up atau Down dengan rincian sebagai berikut:
+1. Buat state diagramnya dengan FSM Moore
+2. Buat kode Verilognya dengan FSM Moore
+3. Buat test bench
+4. Edit constraint
+5. Flash ke FPGA
+6. buat Config.json
+7. RTL to GDSII
+8. Post Layout Simulation

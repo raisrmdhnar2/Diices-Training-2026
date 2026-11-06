@@ -1,0 +1,35 @@
+** sch_path: /home/nexus_is/Diices-Training-2026/Training-5/shift_register_4bit/hasil_convert/tb_shift_register_4bit.sch
+**.subckt tb_shift_register_4bit
+V1 clk 0 Pulse (0 1.8 1p 1p 1p 0.5n 1n)
+V2 rst 0 Pulse (0 1.8 1p 1p 1p 0.5n 10n)
+V3 d_in 0 Pulse (0 1.8 1p 1p 1p 1n 20n)
+V4 en 0 1.8
+V5 VPWR 0 1.8
+V6 VGND 0 0
+**** begin user architecture code
+.lib /home/nexus_is/.ciel/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/combined/sky130.lib.spice tt
+
+
+
+.include shift_register_4bit.spice
+
+
+.control
+  save all
+  tran 0.05n 25n
+
+  plot v(clk)+17.5 v(rst)+15.0 v(en)+12.5 v(d_in)+10.0 v(D)+7.5 v(C)+5.0 v(B)+2.5 v(A)
+  *; Stack sinyal kontrol & input (diberi jarak bertingkat 2.5V tiap track)
+  *plot v(clk)+7.5 v(rst)+5.0 v(en)+2.5 v(d_in)
+
+  *; Stack sinyal output shift register (A, B, C, D)
+  *plot v(D)+7.5 v(C)+5.0 v(B)+2.5 v(A)
+.endc
+
+
+
+
+
+**** end user architecture code
+**.ends
+.end
